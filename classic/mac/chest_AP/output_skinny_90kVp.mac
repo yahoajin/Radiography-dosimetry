@@ -1,0 +1,34 @@
+########
+# ROOT #
+########
+#/gate/output/root/enable
+#/gate/output/root/setFileName benchmarkCT
+#/gate/output/root/setRootHitFlag 0
+#/gate/output/root/setRootSinglesFlag 1
+#/gate/output/root/setRootNtupleFlag 0
+#/gate/output/verbose 2
+
+
+############
+# CT Image #
+############
+/gate/output/imageCT/verbose 		0
+/gate/output/imageCT/enable
+/gate/output/imageCT/setFileName 	../output/Chest_image_90kVp_skinny
+
+/gate/random/setEngineName 		MersenneTwister
+#/gate/output/imageCT/setStartSeed 	567489
+
+##############
+# Organ dose #
+##############
+# Phantom resolution
+/gate/actor/addActor DoseActor             Chest1x
+/gate/actor/Chest1x/save                   ../output/Chest_dose_90kVp_skinny.mhd
+/gate/actor/Chest1x/attachTo               hof_brain
+/gate/actor/Chest1x/stepHitType            random
+/gate/actor/Chest1x/setResolution          256 179 1200
+/gate/actor/Chest1x/enableDose             true
+/gate/actor/Chest1x/enableSquaredDose      false
+/gate/actor/Chest1x/enableUncertaintyDose  false
+/gate/actor/Chest1x/setDoseAlgorithm       MassWeighting

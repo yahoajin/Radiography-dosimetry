@@ -1,0 +1,11 @@
+##############
+# EM PROCESS #
+##############
+/gate/physics/addPhysicsList            emstandard_opt3
+
+/gate/physics/Gamma/SetCutInRegion      world 10 mm
+/gate/physics/Electron/SetCutInRegion   world 10 mm
+
+/gate/physics/Gamma/SetCutInRegion      hof_brain 1 mm
+/gate/physics/Electron/SetCutInRegion   hof_brain 1 mm
+

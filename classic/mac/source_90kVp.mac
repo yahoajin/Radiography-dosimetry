@@ -1,0 +1,16 @@
+/gate/source/addSource 				xraygun
+/gate/source/verbose 				0
+/gate/source/xraygun/setActivity 		1. MBq
+/gate/source/xraygun/gps/verbose 		0
+/gate/source/xraygun/gps/particle 		gamma
+/gate/source/xraygun/gps/energytype 		UserSpectrum
+/gate/source/xraygun/gps/setSpectrumFile 	../data/Mo_90_keV_energySpectrumFluenceTrack.txt
+/gate/source/xraygun/gps/type 			Plane
+/gate/source/xraygun/gps/shape 			Rectangle
+/gate/source/xraygun/gps/halfx 			0.025 mm
+/gate/source/xraygun/gps/halfy 			0.025 mm
+/gate/source/xraygun/gps/mintheta 		0.  deg
+/gate/source/xraygun/gps/maxtheta 		14. deg
+/gate/source/xraygun/gps/centre 		0. 40. 180.0 cm
+/gate/source/xraygun/gps/angtype 		iso
+/gate/source/list

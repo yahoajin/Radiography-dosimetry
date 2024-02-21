@@ -1,0 +1,84 @@
+#########################
+# SET MATERIAL DATABASE #
+#########################
+/gate/geometry/setMaterialDatabase ../data/GateMaterials_XCAT.db
+
+#########
+# WORLD #
+#########
+/gate/world/geometry/setXLength 400. cm
+/gate/world/geometry/setYLength 400. cm
+/gate/world/geometry/setZLength 400. cm
+/gate/world/setMaterial Air
+
+#######################################
+# CT scanner for small animal imaging #
+# 150x200 pixels                      #
+# size of pixels : 0.5x0.5x1.0 mm3    #
+# pixels are made up of silicon       #
+#######################################
+#/control/execute CTScanner.mac
+/control/execute CTScanner_300400.mac
+
+###################################
+# phantom in rotation (1 deg/s) : #
+#  * 1 water cylinder             #
+#  * 4 balls                      #
+###################################
+#/control/execute phantom.mac
+#/gate/waterCylinder/moves/insert rotation
+#/gate/waterCylinder/rotation/setSpeed 0.03333 deg/s
+#/gate/waterCylinder/rotation/setAxis 0 0 1
+
+#/control/execute Phantom_female_skinny.mac             # for skinny habitus
+/control/execute VoxelizedPhantom.mac                  # for general habitus
+#/control/execute Phantom_female_fat.mac                # for fatty habitus
+
+###########
+# PHYSICS #
+###########
+/control/execute physics.mac
+
+#############
+# DIGITIZER #
+#############
+/control/execute digitizer.mac
+
+##########
+# OUTPUT #
+##########
+#/control/execute output_skinny.mac                      # for skinny habitus
+/control/execute output_normal_60kVp.mac                             # for general habitus
+#/control/execute output_fat.mac                         # for fatty habitus
+
+#############
+# VERBOSITY #
+#############
+/control/execute verbose.mac
+
+##################
+# INITIALIZATION #
+##################
+/gate/run/initialize
+
+############################
+# VISUALIZATION PARAMETERS #
+############################
+#/control/execute visu.mac
+/vis/disable
+
+##############
+# SOURCE GPS #
+##############
+#/control/execute source.mac
+#/control/execute source_150kVp.mac
+#/control/execute source_120kVp.mac
+#/control/execute source_90kVp.mac
+/control/execute source_60kVp.mac
+
+###############
+# ACQUISITION #
+###############
+/control/execute acquisition.mac
+
+exit
